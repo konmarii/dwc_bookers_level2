@@ -1,0 +1,6 @@
+<h1>ここはUserInfo, Books, New Bookのページです</h1>
+
+  <div class="profile-container">
+      <h3 class="profile-name"><%= @user.name %></h3>
+  </div>
+<%= link_to 'User Info', edit_user_path(current_user.id) %>
