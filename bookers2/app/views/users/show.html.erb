@@ -18,12 +18,12 @@
       
       <div class="row">
         <% if @user.id == current_user.id %>
-          <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_4417"><%= link_to "プロフィール編集", edit_user_path(@user) %></a>
+          <%= link_to 'UserInfo', edit_user_path(@user), class: "btn btn-secondary btn-block fas fa-user-cog edit_user_4417" %>
         <% end %>
       </div>
       
-            <h2 class="mt-3">New book</h2>
-            <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="jzOYUqsIElAUDSKtgctkIu3iTcyASR8Sw6iWw4VZ7z9Y1q0HuCTNVokiJJxq3sOG0WN+FZD77mAtBNJi5u8ylg==">
+      <h2 class="mt-3">New book</h2>
+      <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="jzOYUqsIElAUDSKtgctkIu3iTcyASR8Sw6iWw4VZ7z9Y1q0HuCTNVokiJJxq3sOG0WN+FZD77mAtBNJi5u8ylg==">
         <div class="form-group">
           <label for="book_title">Title</label>
           <input class="form-control book_title" type="text" name="book[title]" id="book_title">
@@ -36,10 +36,10 @@
           <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
         </div>
       </form>
-          </div>
-          <div class="col-md-8 offset-md-1">
-            <h2>Books</h2>
-            <table class="table table-hover table-inverse">
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
@@ -49,6 +49,14 @@
           </tr>
         </thead>
         <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= link_to attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td><%= link_to book.title, book_path %></td>
+            <td><%= book.opinion %></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

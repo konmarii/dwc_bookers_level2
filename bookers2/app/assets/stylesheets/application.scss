@@ -114,6 +114,12 @@ table {
     border-color: grey;
 }
 
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
 tbody {
     display: table-row-group;
     vertical-align: middle;
@@ -129,4 +135,10 @@ tr {
 th {
     text-align: inherit;
     text-align: -webkit-match-parent;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }
