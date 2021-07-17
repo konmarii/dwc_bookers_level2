@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
      root_path(resource)
-  end 
+  end
+  
   
 end
