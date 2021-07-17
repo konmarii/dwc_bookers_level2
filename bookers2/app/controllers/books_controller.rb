@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
     @books = Book.all
+    @current_user = current_user
     @user = User.find(current_user.id)
   end
 

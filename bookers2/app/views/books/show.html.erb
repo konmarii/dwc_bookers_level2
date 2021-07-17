@@ -48,7 +48,7 @@
         <tbody>
           <tr>
             <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
-            <td><%= link_to @book.title, '/books/:id' %></td>
+            <td><%= link_to @book.title, book_path(params[:id]) %></td>
             <td><%= @book.opinion %></td>
             <% if @user.id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
