@@ -47,7 +47,10 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></br>
+              <%= link_to @user.name, user_path(@user.id) %>
+            </td>
             <td><%= link_to @book.title, book_path(params[:id]) %></td>
             <td><%= @book.opinion %></td>
             <% if @user.id == current_user.id %>
