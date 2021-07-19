@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
     @books = Book.all
-    @current_user = current_user
+    @book = Book.new
     @user = User.find(current_user.id)
   end
 
@@ -11,11 +11,16 @@ class BooksController < ApplicationController
   end
 
   def create
+    @books = Book.all
     @book = Book.new(book_params)
+    @user = User.find(current_user.id)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book.id)
-    flash[:notice_create_book]="You have created book successfully."
+    if @book.save
+      redirect_to book_path(@book.id)
+      flash[:notice_create_book]="You have created book successfully."
+    else
+      render :index
+    end
   end
 
   def edit
@@ -30,9 +35,13 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     @book.user_id = current_user.id
-    @book.update(book_params)
-    redirect_to book_path
-    flash[:notice_update_book]="You have updated book successfully."
+    if @book.update(book_params)
+      redirect_to book_path
+      flash[:notice_update_book]="You have updated book successfully."
+    else
+      render :edit
+      @book = Book.find(params[:id])
+    end
   end
 
   def destroy
@@ -43,6 +52,7 @@ class BooksController < ApplicationController
   end
 
   private
+  
   def book_params
   params.require(:book).permit(:title, :opinion, :user_id)
   end
