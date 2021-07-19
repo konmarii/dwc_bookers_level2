@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  
   def index
     @books = Book.all
     @book = Book.new
@@ -22,14 +23,15 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     if @book.user == current_user
-      render :show
-    else
       render :edit
+    else
+      render :show
     end
   end
 
   def show
     @book = Book.find(params[:id])
+    @newbook = Book.new
     @user = User.find(@book.user_id)
   end
 
@@ -55,6 +57,6 @@ class BooksController < ApplicationController
   private
   
   def book_params
-  params.require(:book).permit(:title, :opinion, :user_id)
+  params.require(:book).permit(:title, :body, :user_id)
   end
 end

@@ -18,11 +18,13 @@
         <div class="form-group">
           <label for="book_opinion">Opinion</label>
           <div>
-            <%= f.text_field :opinion, autofocus: true, id:"inputOpinion" %>
+            <%= f.text_field :body, autofocus: true, id:"inputOpinion" %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.submit "Update Book", class:"btn btn-secondary" %>
+          
+            <%= f.submit "Update Book", class:"btn btn-secondary" %>
+          
         </div>
       </form>
       <% end %>

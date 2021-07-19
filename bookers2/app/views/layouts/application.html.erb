@@ -20,24 +20,24 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
             <li class="nav-item">
               <div class="social">
-                <%= link_to user_path(current_user.id),class: 'nav-link text-light' do %>
+                <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
                 <i class="fas fa-home">Home</i>
                 <% end %>
               </div>
             </li>
             <li class="nav-item">
               <div class="social">
-                <%= link_to '/users',class: 'nav-link text-light' do %>
+                <%= link_to users_path, class: 'nav-link text-light' do %>
                 <i class="fas fa-users">Users</i>
                 <% end %>
               </div>
             </li>
             <li class="nav-item">
               <div class="social">
-                <%= link_to '/books',class: 'nav-link text-light' do %>
+                <%= link_to books_path, class: 'nav-link text-light' do %>
                 <i class="fas fa-book-open">Books</i>
                 <% end %>
               </div>
@@ -50,34 +50,34 @@
               </div>
             </li>
             <% else %>
-            <li class="nav-item">
-              <div class="social">
-                <%= link_to '/',class: 'nav-link text-light' do %>
-                <i class="fas fa-home">Home</i>
-                <% end %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <div class="social">
-                <%= link_to '/about',class: 'nav-link text-light' do %>
-                <i class="fas fa-link">About</i>
-                <% end %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <div class="social">
-                <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-user-plus">sign up</i>
-                <% end %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <div class="social">
-                <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt">login</i>
-                <% end %>
-              </div>
-            </li>
+              <li class="nav-item">
+                <div class="social">
+                  <%= link_to root_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-home">Home</i>
+                  <% end %>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="social">
+                  <%= link_to home_about_path, class: 'nav-link text-light' do %>
+                  <i class="fas fa-link">About</i>
+                  <% end %>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="social">
+                  <%= link_to '/users/sign_up', class: 'nav-link text-light' do %>
+                  <i class="fas fa-user-plus">sign up</i>
+                  <% end %>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="social">
+                  <%= link_to user_session_path, class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-in-alt">login</i>
+                  <% end %>
+                </div>
+              </li>
             <% end %>
             </ul>
           </div>
@@ -89,6 +89,7 @@
     <% flash.each do |message_type, message| %>
       <%= content_tag :div, message, class: message_type %>
     <% end %>
+
     <%= yield %>
   </body>
 
