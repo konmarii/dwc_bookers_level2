@@ -7,8 +7,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user == current_user.id
+      render :show
+    else
+      render :edit
+    end
   end
-
+ 
   def show
     @books = Book.all
     @user = User.find(params[:id])
