@@ -87,9 +87,11 @@
 
   <body>
     <% flash.each do |message_type, message| %>
-      <%= content_tag :div, message, class: message_type %>
+      <div class="success-message">
+        <%= content_tag :div, message, class: message_type %>
+      </div>
     <% end %>
-    <%= yield %>
+    <%= yield %>  
   </body>
 
   <footer>

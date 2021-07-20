@@ -1,10 +1,11 @@
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
+<div class="error-message">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <% @book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
   <% end %>
-<% end %>
-
+</div>
 <%= render 'books/list', user: @user, book: @newbook %>
 
     <div class="col-md-8 offset-md-1">
@@ -16,14 +17,14 @@
         <tbody>
           <tr>
             <td>
-              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></br>
+              <%= attachment_image_tag @user, :profile_image, :fill, 90, 100, format: 'jpeg', fallback: "no_image.jpg" %></br>
               <%= link_to @user.name, user_path(@user.id) %>
             </td>
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
               <% if @user == current_user %>
                 <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-                <td><%= link_to 'Destroy', book_path(@book), class: "btn btn-sm btn-danger", method: :delete %></td>
+                <td><%= link_to 'Destroy', book_path(@book), class: "btn btn-sm btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
               <% end %>
             <td></td>
           </tr>

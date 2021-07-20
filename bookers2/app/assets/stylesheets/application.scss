@@ -43,7 +43,6 @@ main {
   margin: 0 auto;
 }
 
-
 h1, .h1 {
     font-size: 2.5rem;
 }
@@ -179,4 +178,12 @@ th {
 
 .field {
     margin-bottom: 5px;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
 }
