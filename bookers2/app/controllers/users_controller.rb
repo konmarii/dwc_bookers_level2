@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
     @user = User.find(current_user.id)
@@ -16,10 +17,14 @@ class UsersController < ApplicationController
   end
  
   def show
-    @books = Book.all
-    @book = Book.new
-    @user = User.find(params[:id])
-  end
+    if user_signed_in?
+      @books = Book.all
+      @book = Book.new
+      @user = User.find(params[:id])
+    else
+      redirect_to user_session_path
+    end
+  end  
 
   def update
     @user = User.find(params[:id])

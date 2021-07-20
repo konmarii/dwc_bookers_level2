@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
+
   def index
     @books = Book.all
     @book = Book.new
@@ -30,9 +30,13 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @newbook = Book.new
-    @user = User.find(@book.user_id)
+    if user_signed_in?
+      @book = Book.find(params[:id])
+      @newbook = Book.new
+      @user = User.find(@book.user_id)
+    else
+      redirect_to user_session_path
+    end  
   end
 
   def update
