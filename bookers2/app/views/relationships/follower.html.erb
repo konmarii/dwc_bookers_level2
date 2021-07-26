@@ -1,7 +1,5 @@
-<%= render 'users/list', user: @user, book: @book %>
-
-    <div class="col-md-8 offset-md-1">
-      <h2>Users</h2>
+ <div class="col-md-8 offset-md-1">
+      <h2>Follows</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -19,13 +17,6 @@
               <td>follows:<%= user.follower.count %></td>
               <td>followers:<%= user.followed.count %></td>
               <td>
-                <% if user != current_user %>
-                  <% if current_user.following?(user) %>
-                    <%= link_to 'unfollow', user_unfollow_path(user.id, user), method: :POST %>
-                  <% else %>
-                    <%= link_to 'follow', user_follow_path(user.id, user), method: :POST %>
-                  <% end %>
-                <% end %>
               </td>
               <td><%= link_to 'Show', user_path(user.id) %></td>
             </tr>
@@ -33,5 +24,3 @@
         </tbody>
       </table>
     </div>
-  </div>
-</div>

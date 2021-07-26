@@ -14,8 +14,28 @@
         	  <th>introduction</th>
         	  <th><%= user.introduction %></th>
           </tr>
+          <tr>
+        	  <th>follows</th>
+        	  <th><%= user.follower.count %></th>
+          </tr>
+          <tr>
+        	  <th>followers</th>
+        	  <th><%= link_to user_follower_path(user.id, follower.id), user.followed.count %></th>
+          </tr>
         </tbody>
       </table>
+
+      <% if user != current_user %>
+        <% if current_user.following?(user) %>
+          <div class="row">
+          <%= link_to 'unfollow', user_unfollow_path(user.id, user), class: "btn btn-success btn-block", method: :POST %>
+          </div>
+        <% else %>
+          <div class="row">
+          <%= link_to 'follow', user_follow_path(user.id, user), class: "btn btn-success btn-block", method: :POST %>
+          </div>
+        <% end %>
+      <% end %>
 
       <div class="row">
         <%= link_to '', edit_user_path(user.id), class: "btn btn-secondary btn-block fas fa-user-cog" %>
