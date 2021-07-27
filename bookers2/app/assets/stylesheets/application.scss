@@ -40,7 +40,7 @@ body {
 }
 
 main {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 h1, .h1 {
@@ -86,7 +86,7 @@ p {
 }
 
 footer {
-  text-align: center;
+    text-align: center;
 }
 
 .container {
@@ -198,4 +198,8 @@ th {
 
 .btn {
     margin-bottom: 10px;
+}
+
+.search_form {
+    margin: 15px auto;
 }
