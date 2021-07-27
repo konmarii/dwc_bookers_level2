@@ -33,7 +33,6 @@ class UsersController < ApplicationController
 
   def follower
     @user = User.find(params[:user_id])
-    @follower_users = @user.follower_user
     render 'show_follower'
   end
 
