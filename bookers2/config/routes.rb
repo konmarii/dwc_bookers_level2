@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
 
   resources :users, only: [:index, :show, :edit, :update] do
+    get 'follower' => 'users#follower', as: 'follower'
+    get 'followed' => 'users#followed', as: 'followed'
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-    get 'follower' => 'relationships#follower', as: 'follower'
-    get 'followed' => 'relationships#followed', as: 'followed'
   end
 
   resources :books do

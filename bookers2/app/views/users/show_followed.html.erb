@@ -1,0 +1,27 @@
+ <div class="col-md-8 offset-md-1">
+   <h2></h2>
+      <h2>Follower Users</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+            <tr>
+              <td><%= link_to attachment_image_tag user, :profile_image, :fill, 90, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+              <td><%= user.name %></td>
+              <td>follows:<%= user.follower.count %></td>
+              <td>followers:<%= user.followed.count %></td>
+              <td>
+              </td>
+              <td><%= link_to 'Show', user_path(user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

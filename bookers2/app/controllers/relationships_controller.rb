@@ -10,11 +10,4 @@ class RelationshipsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def follower
-    @users = User.find_by(params[:user_id])
-  end
-
-  def followed
-  end
-
 end
