@@ -1,0 +1,15 @@
+<div class="comments", id="comment-<%= book.id %>">
+  <% book.book_comments.each do |book_comment| %>
+    <div class="comment_user">
+      <%= attachment_image_tag book_comment.user, :profile_image, :fill, 90, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <%= link_to book_comment.user.name, user_path(book_comment.user) %>
+    </div>
+    <%= book_comment.comment %>
+    <% if book_comment.user == current_user %>
+      <div class="text-right">
+        <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), class: "btn btn-sm btn-danger", id: "comment_destroy", method: :delete, remote: true %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

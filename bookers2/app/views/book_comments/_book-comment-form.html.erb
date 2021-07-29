@@ -1,0 +1,11 @@
+<div class="new-comment">
+  <%= form_with(model:[book, book_comment], remote: true) do |f| %>
+    <div class="form-group">
+      <label for="book_comment">Book Comment</label>
+      <div class="comment_field"><%= f.text_area :comment, rows:'5', placeholder: "Comment Here", id:"comment_field" %></div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success"><% f.submit '' %>Create Books Comment</button>
+    </div>
+  <% end %>
+</div>
