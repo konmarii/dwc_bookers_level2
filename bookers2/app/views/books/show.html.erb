@@ -30,7 +30,8 @@
             <td>
               <%= render 'favorites/favorite-btn', book: @book %>
             </td>
-            <td> Comment：<%= @book.book_comments.count %></td>
+            <td>Comment：<%= @book.book_comments.count %></td>
+            <td>View : <%= @book.impressions_count %></td>
           </tr>
         </tbody>
       </table>

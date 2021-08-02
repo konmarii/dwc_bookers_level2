@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  impressionist :actions => [:show], :unique => [:impressionable_id, :ip_address]
 
   def index
-    #@books = Book.all
     @books = Book.includes(:users_favorite).sort {|a,b| b.users_favorite.size <=> a.users_favorite.size}
-    @book = Book.new
+    @newbook = Book.new
     @user = User.find(current_user.id)
   end
 
