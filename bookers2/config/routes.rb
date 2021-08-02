@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'chats/show'
   devise_for :users
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
@@ -18,7 +17,6 @@ Rails.application.routes.draw do
   end
 
   get 'search' => 'searches#search'
-  
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create]
 
