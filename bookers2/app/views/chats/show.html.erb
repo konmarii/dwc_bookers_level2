@@ -1,0 +1,22 @@
+<div id="chats_error">
+  <%= render 'chats/errors', chat: @chat %>
+</div>
+
+<div class="col-md-8 offset-md-1">
+  <h2><%= @user.name %>さんとのチャット</h2>
+  <div class="messages">
+    <% @chats.each do |chat| %>
+      <% if chat.user_id == current_user.id %>
+        <p style="text-align: left;"><%= chat.message %></p>
+      <% else %>
+        <p style="text-align: right;"><%= chat.message %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_with model: @chat, remote: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+  <% end %>
+</div>
