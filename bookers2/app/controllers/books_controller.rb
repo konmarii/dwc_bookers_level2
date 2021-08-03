@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   impressionist :actions => [:show], :unique => [:impressionable_id, :ip_address]
 
   def index
-    @books = Book.includes(:users_favorite).sort {|a,b| b.users_favorite.size <=> a.users_favorite.size}
+    @books = Book.includes(:users_favorite).sort { |a, b| b.users_favorite.size <=> a.users_favorite.size }
     @newbook = Book.new
     @user = User.find(current_user.id)
   end
@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book.id)
-      flash[:notice_create_book]="You have created book successfully."
+      flash[:notice_create_book] = "You have created book successfully."
     else
       render :index
     end
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.update(book_params)
       redirect_to book_path
-      flash[:notice_update_book]="You have updated book successfully."
+      flash[:notice_update_book] = "You have updated book successfully."
     else
       render :edit
       @book = Book.find(params[:id])
@@ -51,12 +51,12 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     book.destroy
     redirect_to books_path
-    flash[:notice_destroy]="Book was successfully destroyed."
+    flash[:notice_destroy] = "Book was successfully destroyed."
   end
 
   private
 
   def book_params
-  params.require(:book).permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 end
