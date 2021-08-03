@@ -15,9 +15,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @books = Book.all
     @book = Book.new
     @user = User.find(params[:id])
+    @books = @user.books
+    @books_today = @books.created_today
+    @books_yesterday = @books.created_yesterday
+    @books_this_week = @books.created_this_week
+    @books_last_week = @books.created_last_week
   end
 
   def update
