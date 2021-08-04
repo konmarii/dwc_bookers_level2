@@ -148,6 +148,11 @@
           }
         });
       </script>
+      <%= form_tag(search_path, method: :get) do %>
+        <%= text_field_tag (:day) %>
+    　   <%= select_tag 'range', options_for_select([['選択してください', ''], ['User', '1'], ['Book', '2']]) %>
+        <%= submit_tag "検索" %>
+      <% end %>
     </div>
   </div>
 </div>
