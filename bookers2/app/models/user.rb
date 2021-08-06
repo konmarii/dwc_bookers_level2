@@ -15,7 +15,9 @@ class User < ApplicationRecord
   has_many :books_favorite, through: :favorites, source: :book
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-
+  has_many :group_users
+  has_many :groups, through: :group_users
+  
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
