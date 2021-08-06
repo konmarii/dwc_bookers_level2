@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'followed' => 'users#followed', as: 'followed'
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+    get "search" => "users#search"
   end
 
   resources :books do

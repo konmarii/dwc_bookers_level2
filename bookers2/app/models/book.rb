@@ -14,7 +14,7 @@ class Book < ApplicationRecord
     elsif search == "backward_match"
       @books = Book.where("title LIKE?", "%#{word}")
     elsif search == "perfect_match"
-      @boosk = Book.where(title: word)
+      @books = Book.where(title: word)
     elsif search == "partial_match"
       @books = Book.where("title LIKE?", "%#{word}%")
     else
@@ -31,4 +31,5 @@ class Book < ApplicationRecord
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
   scope :created_this_week, -> { where(created_at: Time.zone.now.all_week) }
   scope :created_last_week, -> { where(created_at: 1.week.ago.all_week) }
+
 end

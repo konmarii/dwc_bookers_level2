@@ -148,11 +148,17 @@
           }
         });
       </script>
-      <%= form_tag(search_path, method: :get) do %>
-        <%= text_field_tag (:day) %>
-    　   <%= select_tag 'range', options_for_select([['選択してください', ''], ['User', '1'], ['Book', '2']]) %>
-        <%= submit_tag "検索" %>
-      <% end %>
+      <div class="search_form">
+        <%= form_tag(user_search_path(@user), method: :get, remote: true) do %>
+          <%= date_field_tag :created_at %>
+          <%= submit_tag "検索", class:"btn btn-success" %>
+        <% end %>
+       <div id="search-books-date">
+          <% if @date_books.present? %>
+            <%= render 'search', date_books: @date_books %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
