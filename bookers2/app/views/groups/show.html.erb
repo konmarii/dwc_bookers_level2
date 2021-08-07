@@ -27,15 +27,18 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
+              <%= @owner.name %></br>
               <% @group.users.each do |user| %>
                 <%= user.name %></br>
               <% end %>
             </td>
             <td>
-              <% if @group.users.include?(current_user) %>
-                <%= link_to 'Leave this group', leave_group_path(@group), class: "btn btn-danger" %>
-              <% else %>
-                <%= link_to 'Join this group', join_group_path(@group), class: "btn btn-success" %>
+              <% if @group.owner_id != current_user.id %>
+                <% if @group.users.include?(current_user) %>
+                  <%= link_to 'Leave this group', leave_group_path(@group), class: "btn btn-danger" %>
+                <% else %>
+                  <%= link_to 'Join this group', join_group_path(@group), class: "btn btn-success" %>
+                <% end %>
               <% end %>
             </td>
             <td>
