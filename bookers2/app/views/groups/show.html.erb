@@ -44,6 +44,7 @@
             <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to 'Edit', edit_group_path(@group.id), class: "btn btn-success" %>
+                <%= link_to 'Notice an event', edit_group_path(@group.id), class: "btn btn-info" %>
               <% end %>
             </td>
           </tr>
