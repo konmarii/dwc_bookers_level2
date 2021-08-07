@@ -18,7 +18,11 @@
               <td><%= group.name %></td>
               <td><%= group.introduction %></td>
               <td></td>
-              <td></td>
+              <td>
+                <% if group.owner_id == @user.id %>
+                  <%= link_to 'Edit', edit_group_path(group.id) %>
+                <% end %>
+              </td>
               <td><%= link_to 'Show', group_path(group.id) %></td>
             </tr>
           <% end %>
