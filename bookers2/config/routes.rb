@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   get 'chats/show'
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create]
-  
-  resources :groups, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
-  
+
+  resources :groups, only: [:index, :show, :new, :create, :edit, :update, :destroy]  do
+    member do
+      get :join
+      get :leave
+    end
+  end
 end
