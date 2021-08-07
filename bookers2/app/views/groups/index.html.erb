@@ -15,12 +15,12 @@
           <% @groups.each do |group| %>
             <tr>
               <td><%= link_to attachment_image_tag group, :image, :fill, 90, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-              <td><%= group.name %></td>
+              <td><%= link_to group.name, group_path(group.id) %></td>
               <td><%= group.introduction %></td>
               <td></td>
               <td>
                 <% if group.owner_id == @user.id %>
-                  <%= link_to 'Edit', edit_group_path(group.id) %>
+                  <%= link_to 'Edit', edit_group_path(group.id), class: "btn btn-success" %>
                 <% end %>
               </td>
               <td><%= link_to 'Show', group_path(group.id) %></td>

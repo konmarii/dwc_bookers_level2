@@ -3,7 +3,12 @@ class GroupsController < ApplicationController
         @groups = Group.all
         @user = current_user
         @book = Book.new
+    end
 
+    def show
+        @user = current_user
+        @newbook = Book.new
+        @group = Group.find(params[:id])
     end
 
     def new
