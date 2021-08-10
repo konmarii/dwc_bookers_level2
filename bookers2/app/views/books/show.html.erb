@@ -23,10 +23,23 @@
             </td>
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
-              <% if @user == current_user %>
-                <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-                <td><%= link_to 'Destroy', book_path(@book), class: "btn btn-sm btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
-              <% end %>
+            <td>
+              <div id="star-rate-<%= @book.id %>"></div>
+              <script>
+              $('#star-rate-<%= @book.id %>').raty({
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= @book.evaluation %>,
+              });
+              </script>
+            </td>
+            <% if @user == current_user %>
+              <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to 'Destroy', book_path(@book), class: "btn btn-sm btn-danger", method: :delete, data: {confirm: "削除しますか？"} %></td>
+            <% end %>
             <td>
               <%= render 'favorites/favorite-btn', book: @book %>
             </td>
